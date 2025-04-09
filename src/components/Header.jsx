@@ -1,7 +1,14 @@
 import './Header.css';
-import logo from '../assets/logo.png'; // Make sure this is the university logo
+import logo from '../assets/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
+  
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <header className="header">
       <div className="top-bar">
@@ -13,20 +20,20 @@ function Header() {
           <h2 className="university-subtitle">Anna University, Chennai</h2>
         </div>
       </div>
-
+      
       <nav className="nav-bar">
-        <a href="#">Home</a>
-        <a href="#">About us</a>
-        <a href="#">Properties</a>
-        <a href="#">Booking</a>
-        <a href="#">Complaints</a>
-        <a href="#">Our Team</a>
-        <a href="#">Map</a>
-        <a href="#">Documents</a>
-        <a href="#">Gallery</a>
-        <a href="#">Tender</a>
-        <a href="#">FAQ</a>
-        <a href="#">Login</a>
+        <Link to="/">Home</Link>
+        <Link to="/about">About us</Link>
+        <Link to="/properties">Properties</Link>
+        <Link to="/booking">Booking</Link>
+        <Link to="/complaints">Complaints</Link>
+        <Link to="/team">Our Team</Link>
+        <Link to="/map">Map</Link>
+        <Link to="/documents">Documents</Link>
+        <Link to="/gallery">Gallery</Link>
+        <Link to="/tender">Tender</Link>
+        <Link to="/faq">FAQ</Link>
+        <Link to="/login">Login</Link>
       </nav>
     </header>
   );

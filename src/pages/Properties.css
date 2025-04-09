@@ -1,0 +1,101 @@
+.properties-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+    background-color: #f0fff4;
+    color: #1b4332;
+  }
+  
+  .table-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    background-color: #014421;
+    padding: 1.2rem;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .properties-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .properties-table th, .properties-table td {
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .properties-table th {
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  
+  .properties-table td {
+    font-weight: 500;
+  }
+  
+  .even-row {
+    background-color: #e6ffe6;
+  }
+  
+  .odd-row {
+    background-color: #ffffff;
+  }
+  
+  .properties-table a {
+    color: #014421;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .properties-table a:hover {
+    color: #006400;
+    text-decoration: underline;
+  }
+  
+  .pagination {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .page-btn {
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #014421;
+    background-color: transparent;
+    color: #014421;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .page-btn:hover {
+    background-color: #014421;
+    color: white;
+  }
+  
+  .page-btn.active {
+    background-color: #014421;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 64, 0, 0.3);
+  }
+  
+  .dots {
+    font-weight: bold;
+    padding: 0 0.5rem;
+  }
+  

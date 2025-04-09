@@ -1,0 +1,13 @@
+src 
+    assets
+    components
+        header.css
+        header.jsx
+        footer.css
+        footer.jsx
+    pages
+        home.css
+        home.jsx
+    app.jsxs
+    index.css
+    main.jsx
