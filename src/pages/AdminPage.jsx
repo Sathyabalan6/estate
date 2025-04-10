@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./AdminPage.css";
 import { FaUser, FaSignOutAlt, FaTrash, FaEdit, FaPlus } from "react-icons/fa";
 import AddMemberDialog from "./AddMemberDialog";
 import EditMemberDialog from "./editbox";
@@ -12,7 +11,7 @@ const AdminDashboard = () => {
   const [team, setTeam] = useState([
     {
       id: 1,
-      name: "Ravi Kumar",
+      name: "Ri Kumar",
       designation: "Manager",
       contact: "9876543210",
     },
@@ -32,49 +31,54 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="admin-dashboard">
-      <aside className="sidebar">
-        <div className="logo-section">
-          <img src="src/assets/logo.png" alt="Logo" className="logo" />
-          <h2>Estate office</h2>
-          <p>Anna University, Chennai</p>
+    <div className="flex h-screen bg-green-50 font-segoe">
+      {/* Sidebar */}
+      <aside className="bg-green-900 text-white w-[250px] p-4 flex flex-col justify-between">
+        <div className="text-center">
+          <img src="src/assets/logo.png" alt="Logo" className="h-[60px] mb-2 mx-auto" />
+          <h2 className="text-xl font-bold">Estate Office</h2>
+          <p className="text-sm">Anna University, Chennai</p>
         </div>
-        <nav className="nav-links">
-          <a href="#">
+        <nav className="mt-8 space-y-4">
+          <a href="#" className="flex items-center gap-2 p-2 rounded-lg font-medium hover:bg-green-700 transition">
             <FaUser /> Manage Team
           </a>
-          <a href="#">
+          <a href="#" className="flex items-center gap-2 p-2 rounded-lg font-medium hover:bg-green-700 transition">
             <FaSignOutAlt /> Logout
           </a>
         </nav>
       </aside>
 
-      <main className="main-content">
-        <header className="dashboard-header">
-          <h1>Manage Team</h1>
-          <button className="add-btn" onClick={() => setShowAddDialog(true)}>
+      {/* Main Content */}
+      <main className="flex-1 p-8 bg-white">
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-2xl font-bold text-green-900">Manage Team</h1>
+          <button
+            className="bg-green-600 text-white font-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-700 transition"
+            onClick={() => setShowAddDialog(true)}
+          >
             <FaPlus /> Add
           </button>
         </header>
 
-        <table className="team-table">
-          <thead>
+        <table className="w-full text-left border-collapse rounded-xl overflow-hidden text-base">
+          <thead className="bg-black text-white uppercase text-sm">
             <tr>
-              <th>NAME OF THE STAFF</th>
-              <th>DESIGNATION</th>
-              <th>CONTACT INFO</th>
-              <th>EDIT</th>
+              <th className="p-4">Name of the Staff</th>
+              <th className="p-4">Designation</th>
+              <th className="p-4">Contact Info</th>
+              <th className="p-4">Edit</th>
             </tr>
           </thead>
           <tbody>
-            {team.map((member) => (
-              <tr key={member.id}>
-                <td>{member.name}</td>
-                <td>{member.designation}</td>
-                <td>{member.contact}</td>
-                <td>
+            {team.map((member, index) => (
+              <tr key={member.id} className={index % 2 === 0 ? "bg-green-100" : "bg-white"}>
+                <td className="p-4">{member.name}</td>
+                <td className="p-4">{member.designation}</td>
+                <td className="p-4">{member.contact}</td>
+                <td className="p-4">
                   <button
-                    className="icon-btn"
+                    className="text-green-900 hover:text-green-600 mr-3"
                     onClick={() => {
                       setSelectedMember(member);
                       setShowEditDialog(true);
@@ -83,10 +87,8 @@ const AdminDashboard = () => {
                     <FaEdit />
                   </button>
                   <button
-                    className="icon-btn"
-                    onClick={() =>
-                      setTeam(team.filter((m) => m.id !== member.id))
-                    }
+                    className="text-green-900 hover:text-green-600"
+                    onClick={() => setTeam(team.filter((m) => m.id !== member.id))}
                   >
                     <FaTrash />
                   </button>
@@ -97,9 +99,17 @@ const AdminDashboard = () => {
         </table>
       </main>
 
+      {/* Dialogs */}
       {showAddDialog && (
-        <AddMemberDialog onClose={() => setShowAddDialog(false)} />
+        <AddMemberDialog
+          onClose={() => setShowAddDialog(false)}
+          onAdd={(newMember) => {
+            setTeam([...team, { ...newMember, id: Date.now() }]);
+            setShowAddDialog(false);
+          }}
+        />
       )}
+
       {showEditDialog && selectedMember && (
         <EditMemberDialog
           member={selectedMember}
